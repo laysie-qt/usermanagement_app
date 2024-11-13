@@ -1,0 +1,67 @@
+.resoure-container {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: auto;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+mat-form-field .mat-input-element:focus {
+    border-color: #4caf50;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.6);
+}
+
+mat-dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+button[mat-button] {
+    color: #555;
+    border: 1px solid #ddd;
+    background-color: transparent;
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+button[mat-button]:hover {
+    background-color: #f5f5f5;
+}
+
+button[mat-button] {
+    background-color: #4a628a;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+button[mat-button]:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+button[mat-button]:hover {
+    background-color: #4a628a;
+}
+
+mat-error {
+    color: #d32f2f;
+    font-size: 12px;
+}
+
+.head-title {
+    background-color: #4a628a;
+    height: 65px;
+    font-size: 20px;
+    color: white;
+}
+
+::ng-deep .mat-mdc-dialog-container .mat-mdc-dialog-title+.mat-mdc-dialog-content {
+    padding: 0px 20px 0 20px;
+}

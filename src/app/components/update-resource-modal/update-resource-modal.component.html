@@ -1,0 +1,35 @@
+<div class="resoure-container">
+    <h2 mat-dialog-title class="head-title">Update Resource</h2>
+    <mat-dialog-content>
+        <form [formGroup]="resourceForm" (ngSubmit)="onSubmit()">
+            <mat-form-field appearance="fill">
+                <mat-label>Name</mat-label>
+                <input matInput formControlName="name" placeholder="Enter resource name" />
+                <mat-error *ngIf="resourceForm.get('name')?.hasError('required')">Name is required</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Color</mat-label>
+                <input matInput formControlName="color" placeholder="Enter resource color (e.g #000000)" />
+                <mat-error *ngIf="resourceForm.get('color')?.hasError('required')">Color is required</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Year</mat-label>
+                <input matInput formControlName="year" placeholder="Enter resource year (e.g 2021)" />
+                <mat-error *ngIf="resourceForm.get('year')?.hasError('required')">Year is required</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Pantone</mat-label>
+                <input matInput formControlName="pantone_value" placeholder="Enter resource pantone value" />
+                <mat-error *ngIf="resourceForm.get('pantone_value')?.hasError('required')">Pantone is
+                    required</mat-error>
+            </mat-form-field>
+        </form>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+        <button mat-button (click)="onCancel()">Cancel</button>
+        <button mat-button (click)="onSubmit()" [disabled]="resourceForm.invalid">Save</button>
+    </mat-dialog-actions>
+</div>

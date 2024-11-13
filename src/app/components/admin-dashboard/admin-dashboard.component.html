@@ -1,0 +1,46 @@
+<div class="dashboard-container">
+    <mat-toolbar color="primary">
+        <span>Admin Dashboard</span>
+        <span class="spacer"></span>
+        <span>Hi, {{ firstName }}!</span>
+        <button mat-icon-button [matMenuTriggerFor]="profileMenu" class="profile-icon-btn">
+            <mat-icon>account_circle</mat-icon>
+        </button>
+
+        <mat-menu #profileMenu="matMenu">
+            <button mat-menu-item (click)="openProfileModal()">View Profile</button>
+            <button mat-menu-item (click)="onLogout()">Logout</button>
+        </mat-menu>
+
+    </mat-toolbar>
+
+    <div class="dashboard-cards">
+        <div *ngIf="isLoading" class="loading">
+            <mat-spinner></mat-spinner>
+        </div>
+        <div *ngIf="!isLoading && users.length == 0" class="no-resources">
+            No users available.
+        </div>
+        <ng-container *ngIf="!isLoading && users.length > 0">
+            <mat-card *ngFor="let user of users" class="resource-card">
+                <mat-card-header>
+                    <mat-card-title-group>
+                        <img mat-card-image [src]="user.avatar" alt="Photo of user">
+                        <mat-card-title>
+                            {{ user.first_name }} {{ user.last_name }}
+                        </mat-card-title>
+                    </mat-card-title-group>
+
+                </mat-card-header>
+                <mat-card-content>
+                    <div class="action-content">
+                        <span>ID: {{ user.id }}<br />
+                            Email: {{ user.email }}</span>
+                        <button mat-icon-button matTooltip="Delete resource" class="delete-btn"
+                            (click)="onDeleteUser(user.id)"><mat-icon>deleteoutline</mat-icon></button>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </ng-container>
+    </div>
+</div>

@@ -1,0 +1,53 @@
+<div class="login-container">
+    <div class="welcome-box">
+        <h1>Welcome to User Management</h1>
+        <p>Manage your account and preferences with ease.</p>
+        <span>
+            <mat-icon>people</mat-icon>
+            <mat-icon>people</mat-icon>
+        </span>
+        
+    </div>
+
+    <div class="login-form-container">
+        <mat-card class="login-card">
+            <h2 class="login-title">Login</h2>
+
+            <mat-card-content>
+                <form [formGroup]="loginForm" (ngSubmit)="onLogin()" class="login-form">
+
+                    <mat-form-field class="full-width" appearance="fill">
+                        <mat-label>Email</mat-label>
+                        <mat-icon matPrefix>mail</mat-icon>
+                        <input matInput formControlName="email" type="email" required />
+                        <mat-error *ngIf="loginForm.controls['email'].hasError('email')">
+                            Please enter a valid email.
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="full-width" appearance="fill">
+                        <mat-label>Password</mat-label>
+                        <mat-icon matPrefix>lock</mat-icon>
+                        <input matInput formControlName="password" type="password" required />
+                        <mat-error *ngIf="loginForm.controls['password'].hasError('required')">
+                            Password is required.
+                        </mat-error>
+                    </mat-form-field>
+
+                    <div *ngIf="loginError" class="error-message">
+                        <mat-icon>error</mat-icon> Invalid login credentials.
+                    </div>
+
+                    <div class="form-actions">
+                        <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">
+                            Login
+                        </button>
+                    </div>
+                </form>
+                <div class="link-container">
+                    <p class="link-text">Don't have an account yet? <a href="/register">Register</a></p>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

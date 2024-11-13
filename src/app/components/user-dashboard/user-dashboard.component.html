@@ -1,0 +1,79 @@
+<div class="dashboard-container">
+    <mat-toolbar color="primary">
+        <span>User Dashboard</span>
+        <span class="spacer"></span>
+        <span>Hi, {{ firstName }}!</span>
+        <button mat-icon-button [matMenuTriggerFor]="profileMenu" class="profile-icon-btn">
+            <mat-icon>account_circle</mat-icon>
+        </button>
+
+        <mat-menu #profileMenu="matMenu">
+            <button mat-menu-item (click)="openProfileModal()">View Profile</button>
+            <button mat-menu-item (click)="onLogout()">Logout</button>
+        </mat-menu>
+
+    </mat-toolbar>
+
+    <div class="resource-list">
+        <div *ngIf="isLoading" class="loading">
+            <mat-spinner></mat-spinner>
+        </div>
+
+        <div *ngIf="!isLoading && resources.length == 0" class="no-resources">
+            No resources available.
+        </div>
+
+        <table *ngIf="!isLoading && resources.length > 0" mat-table [dataSource]="resources">
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef> ID </th>
+                <td mat-cell *matCellDef="let resources">{{ resources.id }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef> Name </th>
+                <td mat-cell *matCellDef="let resources">{{ resources.name }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="year">
+                <th mat-header-cell *matHeaderCellDef> Year </th>
+                <td mat-cell *matCellDef="let resources">{{ resources.year }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="color">
+                <th mat-header-cell *matHeaderCellDef> Color </th>
+                <td mat-cell *matCellDef="let resources">
+                    <div class="color-circle" [matTooltip]="resources.color"
+                        [ngStyle]="{'background-color': resources.color}"></div>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="pantone_value">
+                <th mat-header-cell *matHeaderCellDef> Pantone </th>
+                <td mat-cell *matCellDef="let resources">{{ resources.pantone_value }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="update">
+                <th mat-header-cell *matHeaderCellDef> Modified Date </th>
+                <td mat-cell *matCellDef="let resources">{{ resources.updatedAt }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef></th>
+                <td mat-cell *matCellDef="let resources">
+                    <button mat-icon-button matTooltip="Edit resource" (click)="openResourceModal(resources)">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                    <button mat-icon-button matTooltip="Delete resource" (click)="onDeleteResource(resources.id)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="['id', 'name', 'year', 'color', 'pantone_value', 'update', 'action']">
+            </tr>
+            <tr mat-row
+                *matRowDef="let row; columns: ['id', 'name', 'year', 'color', 'pantone_value', 'update', 'action']">
+            </tr>
+        </table>
+    </div>
+</div>

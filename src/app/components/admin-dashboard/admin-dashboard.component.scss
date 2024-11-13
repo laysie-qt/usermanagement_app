@@ -1,0 +1,94 @@
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-icon-btn {
+    position: absolute;
+    right: 0;
+}
+
+.dashboard-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-evenly;
+    margin-top: 20px;
+}
+
+.resource-card {
+    width: 470px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.resource-card:hover {
+    transform: translateY(-8px);
+}
+
+mat-card-header {
+    background-color: #7ab2d3;
+    color: white;
+    border-radius: 2px;
+}
+
+.delete-btn {
+    position: absolute;
+    right: 5px;
+    bottom: 10px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+mat-toolbar {
+    font-size: 20px;
+    background-color: #4a628a !important;
+    color: white;
+    padding: 3px 45px 0px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 28px;
+}
+
+.mat-mdc-card-title-group {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    flex-flow: row-reverse;
+    align-items: center;
+}
+
+.mat-mdc-card-title,
+.mat-mdc-card-subtitle {
+    display: block;
+    margin: 0;
+    width: 100%;
+    font-size: 36px;
+}
+
+.action-content {
+    display: flex;
+    align-items: flex-end;
+    margin-top: 10px;
+    justify-content: space-between;
+}
+
+img {
+    padding-bottom: 16px;
+}
+
+.no-resources {
+    text-align: center;
+    font-size: 18px;
+    color: #7f8c8d;
+    margin-top: 50px;
+}
+
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+}

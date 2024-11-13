@@ -1,0 +1,24 @@
+<div class="dashboard-container">
+    <div class="dashboard-cards">
+        <mat-card class="resource-card">
+            <mat-card-header>
+                <button mat-icon-button class="close" (click)="close()">
+                    <mat-icon>close</mat-icon>
+                </button>
+                <mat-card-title-group>
+                    <img mat-card-image [src]="users.avatar" alt="Photo of user">
+                    <mat-card-title>
+                        {{ users.first_name }} {{ users.last_name }}
+                    </mat-card-title>
+                </mat-card-title-group>
+
+            </mat-card-header>
+            <mat-card-content>
+                <div class="action-content">
+                    <span>ID: {{ users.id }}<br />
+                        Email: {{ users.email }}</span>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

@@ -1,0 +1,58 @@
+.dashboard-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-evenly;
+}
+
+.resource-card {
+    width: 470px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+mat-card-header {
+    background-color: #7ab2d3;
+    color: white;
+    border-radius: 2px;
+}
+
+button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    border-radius: 4px;
+    padding: 8px;
+    transition: background-color 0.2s;
+}
+
+.mat-toolbar.mat-primary {
+    background-color: #4a628a !important;
+}
+
+.mat-mdc-card-title-group {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    flex-flow: row-reverse;
+    align-items: center;
+}
+
+.mat-mdc-card-title,
+.mat-mdc-card-subtitle {
+    display: block;
+    margin: 0;
+    width: 100%;
+    font-size: 36px;
+}
+
+.action-content {
+    display: flex;
+    align-items: flex-end;
+    margin-top: 10px;
+}
+
+img {
+    padding-bottom: 16px;
+}

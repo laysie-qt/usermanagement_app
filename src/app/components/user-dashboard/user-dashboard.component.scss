@@ -1,0 +1,66 @@
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+mat-toolbar {
+    font-size: 20px;
+    background-color: #4a628a !important;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 28px;
+}
+
+.spacer {
+    flex-grow: 1;
+}
+
+.resource-list {
+    width: 100%;
+}
+
+.no-resources {
+    text-align: center;
+    font-size: 18px;
+    color: #7f8c8d;
+    margin-top: 50px;
+}
+
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+}
+
+.color-circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+}
+
+th {
+    width: 15%;
+}
+
+table.mat-mdc-table tr.mat-mdc-header-row {
+    background-color: #7ab2d3;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    mat-toolbar {
+        font-size: 16px;
+    }
+
+    .mat-table {
+        font-size: 14px;
+    }
+}
