@@ -26,8 +26,18 @@ export class UserDashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllfResources();
-    this.firstName = (JSON.parse(localStorage.getItem('currentUser') || '').email).split('.')[0];
-    this.firstName = this.firstName.charAt(0).toUpperCase() + this.firstName.slice(1).toLowerCase();
+    const currentUser = localStorage.getItem('currentUser');
+    if (currentUser) {
+      try {
+        const parsedUser = JSON.parse(currentUser);
+        if (parsedUser?.email) {
+          this.firstName = parsedUser.email.split('.')[0];
+          this.firstName = this.firstName.charAt(0).toUpperCase() + this.firstName.slice(1).toLowerCase();
+        }
+      } catch (error) {
+        console.error('Error parsing currentUser from localStorage', error);
+      }
+    }
   }
 
   getAllfResources(): void {
@@ -54,11 +64,6 @@ export class UserDashboardComponent implements OnInit {
         this.isLoading = false;
       },
     });
-  }
-
-  onUpdateResource(updatedResource: any): void {
-    this.resources = updatedResource;
-    this.cdr.detectChanges();
   }
 
   onLogout(): void {

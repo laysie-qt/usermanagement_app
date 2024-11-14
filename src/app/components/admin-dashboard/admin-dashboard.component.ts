@@ -22,8 +22,18 @@ export class AdminDashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllUsers();
-    this.firstName = (JSON.parse(localStorage.getItem('currentUser') || '').email).split('.')[0];
-    this.firstName = this.firstName.charAt(0).toUpperCase() + this.firstName.slice(1).toLowerCase();
+    const currentUser = localStorage.getItem('currentUser');
+    if (currentUser) {
+      try {
+        const parsedUser = JSON.parse(currentUser);
+        if (parsedUser?.email) {
+          this.firstName = parsedUser.email.split('.')[0];
+          this.firstName = this.firstName.charAt(0).toUpperCase() + this.firstName.slice(1).toLowerCase();
+        }
+      } catch (error) {
+        console.error('Error parsing currentUser from localStorage', error);
+      }
+    }
   }
 
   getAllUsers(): void {
